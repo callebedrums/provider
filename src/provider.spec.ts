@@ -3,9 +3,12 @@ import { expect, use } from 'chai';
 import SinonChai from 'sinon-chai';
 import chaiAsPromised from 'chai-as-promised';
 
+use(SinonChai);
+use(chaiAsPromised);
+
 describe('injector decorator test suite', () => {
 
-    class TestClass { };
+    class TestClass { }
 
     afterEach(() => {
         cleanInjector();
@@ -17,7 +20,7 @@ describe('injector decorator test suite', () => {
             expect(test).to.be.instanceof(TestClass);
 
             const test2 = getInstance(TestClass);
-            expect(test).to.be.equal(test);
+            expect(test2).to.be.equal(test);
         });
 
         it('should instanciate and provide instance based on a registered provider with useClass attribute', () => {

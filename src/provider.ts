@@ -1,12 +1,12 @@
 
-let $providers: IProviders[] = [];
+let $providers: Provider[] = [];
 let $instances: any = {};
 
-export interface IProviders {
-    provide: any,
-    useValue?: any,
-    useClass?: any,
-    useFunction?: () => any
+export interface Provider {
+    provide: any;
+    useValue?: any;
+    useClass?: any;
+    useFunction?: () => any;
 }
 
 export class NoProviderError extends Error { }
@@ -29,7 +29,7 @@ export const getInstance = (provide: any): any => {
     throw new NoProviderError(`not possible to find a provider for ${provide}`);
 }
 
-export const providers = (newProviders: IProviders[]) => {
+export const providers = (newProviders: Provider[]) => {
     $providers = [...newProviders, ...$providers];
 }
 
